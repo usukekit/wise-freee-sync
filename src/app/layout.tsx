@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// Removed Google Font imports to avoid network dependency during build.
+// These fonts were previously fetched at build time and caused failures in
+// environments without internet access.
+// If custom fonts are needed, consider using `next/font/local` with bundled
+// font files instead.
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// Default system fonts will be used instead of the Geist fonts.
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,9 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         {children}
       </body>
     </html>
